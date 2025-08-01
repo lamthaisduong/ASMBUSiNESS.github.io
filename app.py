@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 st.title("📊 Weekly Sales Dashboard (3-Year Analysis)")
 
-# Đọc dữ liệu từ file nội bộ
+# Đọc dữ liệu từ file nội bộ (CSV đặt cùng thư mục app.py)
 df = pd.read_csv("sales_data_3_years.csv")
 df['Year'] = ((df['Week'] - 1) // 52) + 1
 df['MovingAvg_4weeks'] = df['Sales'].rolling(window=4).mean()
@@ -58,4 +58,3 @@ yearly_sales = df.groupby('Year')['Sales'].sum().reset_index()
 sns.barplot(x='Year', y='Sales', data=yearly_sales, palette='Blues_d', ax=ax5)
 st.pyplot(fig5)
 st.caption("Bar chart shows increasing total sales per year.")
-csv")
